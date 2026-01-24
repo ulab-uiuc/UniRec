@@ -241,9 +241,9 @@ If you find this repository useful, please consider citing:
 
 ```bibtex
 @misc{unirec2024,
-  title={UniRec: Nested Q-Former + Qwen3 LoRA Recommendation Stack},
+  title={UniRec: Unified Multimodal Encoding for LLM-Based Recommendations},
   author={UIUC U-Lab},
-  year={2024},
+  year={2025},
   howpublished={\url{https://github.com/ulab-uiuc/UniRec}}
 }
 ```
