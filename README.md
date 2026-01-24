@@ -1,4 +1,4 @@
-# UniRec: Nested Q-Former + Qwen3 LoRA Recommendation Stack
+# UniRec: Unified Multimodal Encoding for LLM-Based Recommendations
 
 <p align="center">
     <a href="https://github.com/ulab-uiuc/UniRec">
