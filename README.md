@@ -34,9 +34,7 @@
 ## Overview
 
 <p align="center">
-  <a href="figures/unirec_iclr.drawio (1).pdf">
-    <img src="figures/unirec_iclr.drawio (1).pdf" alt="UniRec Architecture" width="100%">
-  </a>
+  <img src="figures/unirec_iclr.drawio.png" alt="UniRec Architecture" width="100%">
 </p>
 
 This repository demonstrates a **nested Q-Former + Qwen3 LoRA** recommendation stack:
