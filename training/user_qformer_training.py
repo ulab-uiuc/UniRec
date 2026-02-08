@@ -233,7 +233,7 @@ if __name__ == "__main__":
     train_user_qformer(
         output_dir="user_qformer_checkpoints",
         item_qformer_checkpoint="qformer_checkpoints_contrastive_32_query_tokens/best_qformer_model.pth",
-        item_encoder_config="triplet_config.yaml",
+        item_encoder_config="config/triplet_config.yaml",
         history_path="data_rec/data/Amazon_All_Beauty_all_train_LRanker.json",
         review_path="data_rec/dict/All_Beauty_review_dict.json",
         item_data_path="data_rec/dict/All_Beauty_item_triplet_dict.json",

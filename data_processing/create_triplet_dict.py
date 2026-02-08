@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Script to create All_Beauty_item_triplet_dict.json by filtering 
-All_Beauty_item_dict.json based on fields specified in triplet_config.yaml
+Script to create All_Beauty_item_triplet_dict.json by filtering
+All_Beauty_item_dict.json based on fields specified in config/triplet_config.yaml
 """
 
 import json
@@ -93,7 +93,7 @@ def filter_item_data(item_data, field_mapping):
 
 def main():
     # File paths
-    config_path = 'data_rec/training/triplet_config.yaml'
+    config_path = 'config/triplet_config.yaml'
     input_path = 'data_rec/dict/All_Beauty_item_dict.json'
     output_path = 'data_rec/dict/All_Beauty_item_triplet_dict.json'
     

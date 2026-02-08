@@ -23,7 +23,7 @@ These modules are shared across data processing, training, evaluation, and infer
 
 - **`item_encoder_pure_value.py`**
   - Defines the general-purpose `ItemEncoder` class:
-    - Loads a YAML config (`triplet_config.yaml`) to know which fields and encoders to use.
+    - Loads a YAML config (`config/triplet_config.yaml`) to know which fields and encoders to use.
     - Uses CLIP/other encoders plus `mwne` utilities for numeric/time/geo features.
   - Used by Item Q-Former training, precomputation, inference, and sometimes user modeling.
 

@@ -1,0 +1,22 @@
+FIELD_MAPPING:
+  # Field name -> {field_id, modality_id, modality_type}
+  title:            [0, 0, text]
+  description:      [1, 0, text]
+  features:         [2, 0, text]
+  main_category:    [3, 1, category]
+  store:            [4, 1, category]
+  brand:            [5, 1, category]
+  style:            [6, 1, category]
+  color:            [7, 1, category]
+  size:             [8, 1, category]
+  material:         [9, 1, category]
+  main_image:       [10, 2, image]
+  price:            [11, 3, number]
+  average_rating:   [12, 3, number]
+  rating_number:    [13, 3, number]
+
+MODALITY_IDS:
+  text: 0
+  category: 1
+  image: 2
+  number: 3

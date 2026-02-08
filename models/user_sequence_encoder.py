@@ -171,7 +171,7 @@ def main():
     print("🚀 Initializing User Sequence Encoder...")
     sequence_encoder = UserSequenceEncoder(
         item_qformer_checkpoint_path="qformer_checkpoints_contrastive_32_query_tokens/best_qformer_model.pth",
-        item_encoder_config_path="triplet_config.yaml"
+        item_encoder_config_path="config/triplet_config.yaml"
     )
     
     print("\n🔍 Encoding user sequence...")

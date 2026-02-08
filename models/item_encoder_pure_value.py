@@ -13,7 +13,7 @@ import requests
 import torch.nn.functional as F
 
 class ItemEncoder:
-    def __init__(self, config_path: str = "triplet_config.yaml"):
+    def __init__(self, config_path: str = "config/triplet_config.yaml"):
         """
         Initialize the ItemEncoder with all necessary encoders for different modalities.
         
