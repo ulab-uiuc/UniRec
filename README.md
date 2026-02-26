@@ -244,10 +244,10 @@ All paths and hyperparameters are **meant to be edited** for your dataset; every
 If you find this repository useful, please consider citing:
 
 ```bibtex
-@misc{unirec2024,
+@article{lei2026unirec,
   title={UniRec: Unified Multimodal Encoding for LLM-Based Recommendations},
-  author={UIUC U-Lab},
-  year={2025},
-  howpublished={\url{https://github.com/ulab-uiuc/UniRec}}
+  author={Lei, Zijie and Feng, Tao and Hua, Zhigang and Xie, Yan and Lin, Guanyu and Yang, Shuang and Liu, Ge and You, Jiaxuan},
+  journal={arXiv preprint arXiv:2601.19423},
+  year={2026}
 }
 ```
