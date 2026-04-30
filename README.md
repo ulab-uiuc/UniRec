@@ -7,6 +7,9 @@
     <!-- <a href="http://arxiv.org/abs/2507.10540">
         <img alt="arXiv" src="https://img.shields.io/badge/arXiv-2507.10540-red?logo=arxiv">
     </a> -->
+    <a href="https://huggingface.co/datasets/ulab-ai/UniRec">
+        <img alt="Hugging Face" src="https://img.shields.io/badge/🤗%20Hugging%20Face-Dataset-yellow">
+    </a>
     <a href="https://github.com/ulab-uiuc/UniRec/blob/master/LICENSE">
         <img alt="License" src="https://img.shields.io/badge/LICENSE-MIT-green">
     </a>
@@ -21,10 +24,10 @@
         <img alt="Issues" src="https://img.shields.io/github/issues/ulab-uiuc/UniRec">
     </a>
 </p>
-
 <p align="center">
     <a href="https://github.com/ulab-uiuc/UniRec">📦 Repository</a> |
     <!-- <a href="http://arxiv.org/abs/2507.10540">📜 arXiv</a> | -->
+    <a href="https://huggingface.co/datasets/ulab-ai/UniRec">🤗 Dataset</a> |
     <a href="#-folder-structure">📂 Structure</a> |
     <a href="#-quickstart">🚀 Quickstart</a>
 </p>
