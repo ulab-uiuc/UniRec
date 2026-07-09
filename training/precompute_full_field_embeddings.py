@@ -30,7 +30,9 @@ def precompute_full_dataset_embeddings(data_path, cache_dir, precompute_batch_si
 
 if __name__ == "__main__":
     # Configuration
-    DATA_PATH = "data_rec/dict/All_Beauty_item_triplet_dict.json"
+    # Dataset name; override with `UNIREC_DATASET=<name>` to use a different Amazon category.
+    DATASET_NAME = os.environ.get("UNIREC_DATASET", "Beauty_and_Personal_Care")
+    DATA_PATH = f"data_rec/dict/{DATASET_NAME}_item_triplet_dict.json"
     CACHE_DIR = "embedding_cache_contrastive/full"
     # For RTX A6000 (49GB VRAM), you can use a large batch size
     PRECOMPUTE_BATCH_SIZE = 8192 

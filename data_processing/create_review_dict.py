@@ -1,7 +1,11 @@
 import json
+import os
 
-input_path = 'data_rec/temp/All_Beauty.jsonl'
-output_path = 'data_rec/dict/All_Beauty_review_dict.json'
+# Dataset name; override with `UNIREC_DATASET=<name>` to use a different Amazon category.
+DATASET_NAME = os.environ.get("UNIREC_DATASET", "Beauty_and_Personal_Care")
+
+input_path = f'data_rec/temp/{DATASET_NAME}.jsonl'
+output_path = f'data_rec/dict/{DATASET_NAME}_review_dict.json'
 
 review_dict = {}
 

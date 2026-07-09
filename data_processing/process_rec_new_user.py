@@ -8,6 +8,7 @@ various types of prompts for different evaluation scenarios.
 
 import pandas as pd
 import numpy as np
+import os
 import random
 from typing import List, Dict, Tuple, Any
 import json
@@ -18,7 +19,7 @@ def load_data(data_source: str) -> pd.DataFrame:
     """Load interaction data from Amazon movie dataset files.
     
     Args:
-        data_source: e.g., 'Amazon_All_Beauty'
+        data_source: e.g., 'Amazon_Beauty_and_Personal_Care'
     
     Returns:
         DataFrame containing user interactions with items
@@ -103,9 +104,11 @@ def process_samples(samples: List[Dict]) -> List[Dict]:
 
 def main():
     """Main execution function."""
-    # Only process Amazon_All_Beauty (or other specified dataset)
-    data_sources = ['Amazon_All_Beauty']
-    
+    # Dataset name; override with `UNIREC_DATASET=<name>` to use a different Amazon category.
+    dataset_name = os.environ.get("UNIREC_DATASET", "Beauty_and_Personal_Care")
+    # Reads data_rec/Amazon_<dataset_name>.inter
+    data_sources = [f'Amazon_{dataset_name}']
+
     for data_source in data_sources:
         try:
             # Load data

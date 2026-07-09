@@ -7,11 +7,14 @@ from transformers import AutoProcessor, AutoModel
 import json
 
 # === Load all data files at the beginning ===
+# Dataset name; override with `UNIREC_DATASET=<name>` to use a different Amazon category.
+DATASET_NAME = os.environ.get("UNIREC_DATASET", "Beauty_and_Personal_Care")
+
 # File paths
-train_path = 'data_rec/data/Amazon_All_Beauty_all_train_LRanker.json'
-review_dict_path = 'data_rec/dict/All_Beauty_review_dict.json'
-item_embedding_path = 'data_rec/embeddings/all_beauty_item_embedding_clip.json'
-item_dict_path = 'data_rec/dict/All_Beauty_item_dict.json'
+train_path = f'data_rec/data/Amazon_{DATASET_NAME}_all_train_LRanker.json'
+review_dict_path = f'data_rec/dict/{DATASET_NAME}_review_dict.json'
+item_embedding_path = f'data_rec/embeddings/{DATASET_NAME.lower()}_item_embedding_clip.json'
+item_dict_path = f'data_rec/dict/{DATASET_NAME}_item_dict.json'
 
 # Load train file and get the first element
 with open(train_path, 'r') as f:

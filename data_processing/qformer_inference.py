@@ -177,8 +177,10 @@ def run_inference(model, field_names, item_encoder, data_path, output_path, batc
 
 if __name__ == "__main__":
     # --- Configuration ---
+    # Dataset name; override with `UNIREC_DATASET=<name>` to use a different Amazon category.
+    DATASET_NAME = os.environ.get("UNIREC_DATASET", "Beauty_and_Personal_Care")
     CHECKPOINT_PATH = "qformer_checkpoints_contrastive_8_query_tokens/best_qformer_model.pth"
-    INPUT_DATA_PATH = "data_rec/dict/All_Beauty_item_triplet_dict.json"
+    INPUT_DATA_PATH = f"data_rec/dict/{DATASET_NAME}_item_triplet_dict.json"
     OUTPUT_TOKENS_PATH = "inference_results/qformer_item_query_tokens.pkl"
     INFERENCE_BATCH_SIZE = 128
     

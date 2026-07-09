@@ -9,6 +9,9 @@ from tqdm import tqdm
 from math import ceil
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
+# Dataset name; override with `UNIREC_DATASET=<name>` to use a different Amazon category.
+DATASET_NAME = os.environ.get("UNIREC_DATASET", "Beauty_and_Personal_Care")
+
 # Set device
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {device}")
@@ -58,12 +61,12 @@ model = model.to(device)
 processor = AutoProcessor.from_pretrained("openai/clip-vit-base-patch32")
 
 # Load item dict
-item_dict_path = "data_rec/dict/All_Beauty_item_dict.json"
+item_dict_path = f"data_rec/dict/{DATASET_NAME}_item_dict.json"
 item_dict = json.load(open(item_dict_path, "r"))
 
 # Load train and test files and collect all unique item IDs
-train_json_path = "data_rec/data/Amazon_All_Beauty_all_train_LRanker.json"
-test_json_path = "data_rec/data/Amazon_All_Beauty_all_test_LRanker.json"
+train_json_path = f"data_rec/data/Amazon_{DATASET_NAME}_all_train_LRanker.json"
+test_json_path = f"data_rec/data/Amazon_{DATASET_NAME}_all_test_LRanker.json"
 
 unique_item_ids = set()
 for json_path in [train_json_path, test_json_path]:
@@ -124,7 +127,7 @@ for batch_ids in tqdm(batch_iterable(item_ids, batch_size), total=ceil(len(item_
         embeddings[item_id] = combined_emb.cpu().tolist()
 
 # Save embeddings to file
-output_path = "data_rec/embeddings/all_beauty_item_embedding_clip.json"
+output_path = f"data_rec/embeddings/{DATASET_NAME.lower()}_item_embedding_clip.json"
 with open(output_path, "w") as f:
     json.dump(embeddings, f)
 
