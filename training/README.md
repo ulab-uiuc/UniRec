@@ -38,5 +38,5 @@ These scripts train each stage of the nested Q-Former + Qwen3 LoRA architecture.
     - After you have:
       - An item query-token cache from `generate_all_item_embeddings.py`.
       - A trained Item Q-Former checkpoint.
-      - Candidate item embedding JSON (for example, `all_beauty_item_embedding_qwen3_0.6B.json`).
+      - Candidate item embedding JSON (for example, `beauty_and_personal_care_item_embedding_qwen3_0.6B.json`).
 

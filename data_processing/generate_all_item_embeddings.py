@@ -596,8 +596,8 @@ Examples:
     python generate_all_item_embeddings.py --batch-size 16 --checkpoint "path/to/checkpoint.pth"
         """
     )
-    parser.add_argument("--data", type=str, 
-                       default="data_rec/dict/All_Beauty_item_triplet_dict.json",
+    parser.add_argument("--data", type=str,
+                       default=f"data_rec/dict/{os.environ.get('UNIREC_DATASET', 'Beauty_and_Personal_Care')}_item_triplet_dict.json",
                        help="Path to the input JSON data file")
     parser.add_argument("--checkpoint", type=str, 
                        default="qformer_checkpoints_2_tokens/best_qformer_model.pth",

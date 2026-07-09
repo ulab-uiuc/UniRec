@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Script to create All_Beauty_item_triplet_dict.json by filtering
-All_Beauty_item_dict.json based on fields specified in config/triplet_config.yaml
+Script to create <DATASET_NAME>_item_triplet_dict.json by filtering
+<DATASET_NAME>_item_dict.json based on fields specified in config/triplet_config.yaml
 """
 
 import json
@@ -92,10 +92,13 @@ def filter_item_data(item_data, field_mapping):
     return filtered_data
 
 def main():
+    # Dataset name; override with `UNIREC_DATASET=<name>` to use a different Amazon category.
+    dataset_name = os.environ.get("UNIREC_DATASET", "Beauty_and_Personal_Care")
+
     # File paths
     config_path = 'config/triplet_config.yaml'
-    input_path = 'data_rec/dict/All_Beauty_item_dict.json'
-    output_path = 'data_rec/dict/All_Beauty_item_triplet_dict.json'
+    input_path = f'data_rec/dict/{dataset_name}_item_dict.json'
+    output_path = f'data_rec/dict/{dataset_name}_item_triplet_dict.json'
     
     # Check if input file exists
     if not os.path.exists(input_path):

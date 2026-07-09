@@ -187,11 +187,13 @@ def train_qformer(data_path, sequences_path, output_dir, **kwargs):
                 print(f"Saved new best model to {save_path}")
 
 if __name__ == "__main__":
+    # Dataset name; override with `UNIREC_DATASET=<name>` to use a different Amazon category.
+    DATASET_NAME = os.environ.get("UNIREC_DATASET", "Beauty_and_Personal_Care")
     # For RTX A6000 (49GB VRAM) - feel free to increase precompute_batch_size further if needed
     # Recommended values: 8192 (safe), 12288 (aggressive), 16384 (max for most scenarios)
     train_qformer(
-        data_path="data_rec/dict/All_Beauty_item_triplet_dict.json",
-        sequences_path="data_rec/data/Amazon_All_Beauty_all_train_LRanker.json",
+        data_path=f"data_rec/dict/{DATASET_NAME}_item_triplet_dict.json",
+        sequences_path=f"data_rec/data/Amazon_{DATASET_NAME}_all_train_LRanker.json",
         output_dir="qformer_checkpoints_contrastive_32_query_tokens",
         num_epochs=500,
         batch_size=4096,

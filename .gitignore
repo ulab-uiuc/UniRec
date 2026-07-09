@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# Generated data and artifacts (not tracked)
+data_rec/
+number_encoders/
+qformer_checkpoints*/
+user_qformer_checkpoints/
+embedding_cache*/
+inference_results/
+lora_qformer*/
+*.pth
+*.pkl
+
+# OS / editor
+.DS_Store

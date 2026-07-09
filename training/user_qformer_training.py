@@ -230,13 +230,15 @@ def train_user_qformer(output_dir, **kwargs):
 
 # --- 4. Main Execution Block ---
 if __name__ == "__main__":
+    # Dataset name; override with `UNIREC_DATASET=<name>` to use a different Amazon category.
+    DATASET_NAME = os.environ.get("UNIREC_DATASET", "Beauty_and_Personal_Care")
     train_user_qformer(
         output_dir="user_qformer_checkpoints",
         item_qformer_checkpoint="qformer_checkpoints_contrastive_32_query_tokens/best_qformer_model.pth",
         item_encoder_config="config/triplet_config.yaml",
-        history_path="data_rec/data/Amazon_All_Beauty_all_train_LRanker.json",
-        review_path="data_rec/dict/All_Beauty_review_dict.json",
-        item_data_path="data_rec/dict/All_Beauty_item_triplet_dict.json",
+        history_path=f"data_rec/data/Amazon_{DATASET_NAME}_all_train_LRanker.json",
+        review_path=f"data_rec/dict/{DATASET_NAME}_review_dict.json",
+        item_data_path=f"data_rec/dict/{DATASET_NAME}_item_triplet_dict.json",
         num_epochs=50,
         batch_size=64,
         learning_rate=5e-5,

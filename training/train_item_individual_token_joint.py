@@ -19,14 +19,17 @@ import pickle
 from models.qformer_utils import QFormerForItemRepresentation, QFormerDataset
 from models.item_encoder_pure_value import ItemEncoder
 
-# New: paths for Amazon All Beauty
-# TRAIN_DATA_PATH = "data_rec/data/Amazon_All_Beauty_all_train_LRanker.json"
-# VAL_DATA_PATH = "data_rec/data/Amazon_All_Beauty_all_test_LRanker.json"
-TRAIN_DATA_PATH = "data_rec/data/Amazon_All_Beauty_20_train.json"
-VAL_DATA_PATH = "data_rec/data/Amazon_All_Beauty_20_test.json"
-ITEM_EMB_PATH = "data_rec/embeddings/all_beauty_item_embedding_qwen3_0.6B.json"
+# Dataset name; override with `UNIREC_DATASET=<name>` to use a different Amazon category.
+DATASET_NAME = os.environ.get("UNIREC_DATASET", "Beauty_and_Personal_Care")
+
+# Paths for the selected Amazon category
+# TRAIN_DATA_PATH = f"data_rec/data/Amazon_{DATASET_NAME}_all_train_LRanker.json"
+# VAL_DATA_PATH = f"data_rec/data/Amazon_{DATASET_NAME}_all_test_LRanker.json"
+TRAIN_DATA_PATH = f"data_rec/data/Amazon_{DATASET_NAME}_20_train.json"
+VAL_DATA_PATH = f"data_rec/data/Amazon_{DATASET_NAME}_20_test.json"
+ITEM_EMB_PATH = f"data_rec/embeddings/{DATASET_NAME.lower()}_item_embedding_qwen3_0.6B.json"
 QFORMER_CHECKPOINT_PATH = "qformer_checkpoints_contrastive_2_query_tokens/best_qformer_model.pth"
-ITEM_DICT_PATH = "data_rec/dict/All_Beauty_item_triplet_dict.json"
+ITEM_DICT_PATH = f"data_rec/dict/{DATASET_NAME}_item_triplet_dict.json"
 # QFORMER_CACHE_DIR is no longer used for pre-computation, but the underlying QFormerDataset will use its own cache.
 FIELD_EMBEDDING_CACHE_DIR = "embedding_cache_contrastive/full"
 
