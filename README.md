@@ -114,7 +114,12 @@ Run the following commands to prepare your dataset:
 
 ### 1. Prepare Data
 
-The default dataset is the Amazon **Beauty and Personal Care** category. The raw files are available from the [UniRec HuggingFace dataset](https://huggingface.co/datasets/ulab-ai/UniRec) under `amazon_beauty/`. Place them where the scripts expect them:
+UniRec is not tied to a single dataset. Because all Amazon Reviews categories share the same schema, the pipeline works on **any** of them — the HuggingFace release is just a ready-to-run **example** so you can start fast, not a required dependency.
+
+- **Fastest start:** download the pre-packaged **Beauty and Personal Care** files from the [UniRec HuggingFace dataset](https://huggingface.co/datasets/ulab-ai/UniRec) (`amazon_beauty/`) and drop them in as shown below. This is the default and needs no configuration.
+- **Any other category:** you're free to run on a different Amazon category (Baby Products, Electronics, Books, …). Point the pipeline at it with the `UNIREC_DATASET` environment variable and supply that category's raw files yourself (see *Using a different dataset* below).
+
+The default dataset is the Amazon **Beauty and Personal Care** category. Place the files where the scripts expect them:
 
 ```
 data_rec/
@@ -143,7 +148,9 @@ Notes on the three raw inputs:
 
 Only `data_rec/temp/` and `data_rec/Amazon_Beauty_and_Personal_Care.inter` hold raw inputs. The `dict/`, `data/`, and `embeddings/` folders are populated by the scripts below.
 
-> **Using a different dataset.** Every script derives its paths from a single dataset name, defaulting to `Beauty_and_Personal_Care`. To point the whole pipeline at another Amazon category, set the `UNIREC_DATASET` environment variable — e.g. `export UNIREC_DATASET=Baby_Products` — and provide the matching `meta_<name>.jsonl`, `<name>.jsonl`, and `Amazon_<name>.inter` files under `data_rec/`.
+> **Using a different dataset.** Every script derives its paths from a single dataset name, defaulting to `Beauty_and_Personal_Care`. To run the whole pipeline on another Amazon category, set the `UNIREC_DATASET` environment variable — e.g. `export UNIREC_DATASET=Baby_Products` — and place that category's files under `data_rec/` with the matching names: `data_rec/temp/meta_<name>.jsonl`, `data_rec/temp/<name>.jsonl`, and `data_rec/Amazon_<name>.inter`.
+>
+> The metadata and review `.jsonl` files come directly from [Amazon Reviews 2023](https://amazon-reviews-2023.github.io/) (one file per category). The `.inter` file is a RecBole-style interaction table (`user_id`, `item_id`, `rating`, `timestamp`, tab-separated, with a header line) — this repo does not build it from raw, so you need to obtain or generate it yourself for a new category. The two Amazon categories in the HuggingFace release (`amazon_beauty/`, `amazon_baby/`) show the exact file layout to reproduce.
 
 Then run the dict builders and rec processors:
 
