@@ -150,7 +150,11 @@ Only `data_rec/temp/` and `data_rec/Amazon_Beauty_and_Personal_Care.inter` hold 
 
 > **Using a different dataset.** Every script derives its paths from a single dataset name, defaulting to `Beauty_and_Personal_Care`. To run the whole pipeline on another Amazon category, set the `UNIREC_DATASET` environment variable — e.g. `export UNIREC_DATASET=Baby_Products` — and place that category's files under `data_rec/` with the matching names: `data_rec/temp/meta_<name>.jsonl`, `data_rec/temp/<name>.jsonl`, and `data_rec/Amazon_<name>.inter`.
 >
-> The metadata and review `.jsonl` files come directly from [Amazon Reviews 2023](https://amazon-reviews-2023.github.io/) (one file per category). The `.inter` file is a RecBole-style interaction table (`user_id`, `item_id`, `rating`, `timestamp`, tab-separated, with a header line) — this repo does not build it from raw, so you need to obtain or generate it yourself for a new category. The two Amazon categories in the HuggingFace release (`amazon_beauty/`, `amazon_baby/`) show the exact file layout to reproduce.
+> **Where to get the files for another category:**
+> - **Raw metadata + reviews (`.jsonl`)** — download the per-category `meta_<name>.jsonl.gz` and `<name>.jsonl.gz` from the [Amazon Reviews 2023 dataset](https://amazon-reviews-2023.github.io/) (McAuley Lab, UCSD). Its "Grouped by Category" table lists ~30 categories, each with paired `review` and `meta` download links; `gunzip` them into `data_rec/temp/`.
+> - **Interactions (`.inter`)** — this repo does not build the `.inter` from raw, so you supply it. It is a RecBole-style atomic file: tab-separated with a header line, columns `user_id`, `item_id`, `rating`, `timestamp`. The review `.jsonl` already contains all four fields (`user_id`, `parent_asin`, `rating`, `timestamp`), so you can generate the `.inter` directly from it, or use [RecBole's conversion tools](https://github.com/RUCAIBox/RecSysDatasets/tree/master/conversion_tools) (see `usage/Amazon.md`) for a standardized RecBole workflow. Note that RecBole's *pre-built* Amazon atomic files are from the 2014/2018 dumps and use different item IDs than Amazon Reviews 2023, so build the `.inter` from the 2023 files to stay consistent with the metadata.
+>
+> The two Amazon categories in the HuggingFace release (`amazon_beauty/`, `amazon_baby/`) show the exact file layout to reproduce.
 
 Then run the dict builders and rec processors:
 
